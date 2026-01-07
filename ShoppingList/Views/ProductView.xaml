@@ -1,0 +1,64 @@
+<ContentView
+    x:Class="ShoppingList.Views.ProductView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid
+        Padding="8"
+        ColumnSpacing="8"
+        ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto">
+
+        <CheckBox
+            Grid.Column="0"
+            IsChecked="{Binding IsBought}"
+            CheckedChanged="BoughtChanged"/>
+
+        <Label
+            Grid.Column="1"
+            Text="{Binding Name}"
+            VerticalOptions="Center">
+
+            <Label.Triggers>
+                <DataTrigger
+                    TargetType="Label"
+                    Binding="{Binding IsBought}"
+                    Value="True">
+                    <Setter Property="TextDecorations" Value="Strikethrough"/>
+                    <Setter Property="TextColor" Value="Gray"/>
+                </DataTrigger>
+            </Label.Triggers>
+
+        </Label>
+
+        <Button
+            Grid.Column="2"
+            Text="-"
+            WidthRequest="30"
+            Clicked="MinusClicked"/>
+
+        <Label
+            Grid.Column="3"
+            Text="{Binding Quantity}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+        <Button
+            Grid.Column="4"
+            Text="+"
+            WidthRequest="30"
+            Clicked="PlusClicked"/>
+
+        <Label
+            Grid.Column="5"
+            Text="{Binding Unit}"
+            VerticalOptions="Center"/>
+
+        <Button
+            Grid.Column="6"
+            Text="Usuń"
+            BackgroundColor="#FDECEA"
+            TextColor="Black"
+            Clicked="DeleteClicked"/>
+
+    </Grid>
+</ContentView>
