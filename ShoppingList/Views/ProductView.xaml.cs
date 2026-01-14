@@ -20,7 +20,7 @@ public partial class ProductView : ContentView
 
     private void MinusClicked(object sender, EventArgs e)
     {
-        if (BindingContext is Product p && p.Quantity > 0)
+        if (BindingContext is Product p && p.Quantity > 1)
         {
             p.Quantity--;
             MainPage.SaveCategories();
@@ -36,6 +36,28 @@ public partial class ProductView : ContentView
             c.SortProducts();
             MainPage.SaveCategories();
         }
+    }
+
+    private void valueCheck(object sender, EventArgs e)
+    {
+        if (BindingContext is not Product p)
+            return;
+
+        var entry = sender as Entry;
+        if (entry == null)
+            return;
+
+        if (!int.TryParse(entry.Text, out int value) || value < 1)
+        {
+            p.Quantity = 1;
+            entry.Text = "1";
+        }
+        else
+        {
+            p.Quantity = value;
+        }
+
+        MainPage.SaveCategories();
     }
 
     private void DeleteClicked(object sender, EventArgs e)

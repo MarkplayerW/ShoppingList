@@ -6,7 +6,7 @@ namespace ShoppingList.Services;
 public class FileService
 {
     private readonly string path =
-        Path.Combine(FileSystem.AppDataDirectory, "shoppinglist.json");
+        Path.Combine(FileSystem.AppDataDirectory, "shoppinglists.json");
 
     public List<Category> Load()
     {

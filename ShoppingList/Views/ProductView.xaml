@@ -6,7 +6,7 @@
     <Grid
         Padding="8"
         ColumnSpacing="8"
-        ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto">
+        ColumnDefinitions="Auto,*,Auto,50,Auto,Auto,Auto">
 
         <CheckBox
             Grid.Column="0"
@@ -36,11 +36,17 @@
             WidthRequest="30"
             Clicked="MinusClicked"/>
 
-        <Label
+        <Entry
             Grid.Column="3"
+            WidthRequest="50"
+            MaxLength="4"
             Text="{Binding Quantity}"
+            Keyboard="Numeric"
+            HorizontalTextAlignment="Center"
+            Completed="valueCheck"
+            Unfocused="valueCheck"
             VerticalOptions="Center"
-            HorizontalOptions="Center"/>
+            />
 
         <Button
             Grid.Column="4"
